@@ -1,0 +1,42 @@
+[gd_scene load_steps=3 format=3 uid="uid://dmjvcnybp0cfl"]
+
+[ext_resource type="Script" path="res://Prefabs/UI/Inventory/inv_ui.gd" id="1_nhtri"]
+[ext_resource type="PackedScene" uid="uid://b2arw6g8jjrx3" path="res://Prefabs/UI/Inventory/inv_ui_slot.tscn" id="2_p5d8i"]
+
+[node name="Inv_UI" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 48.0
+offset_top = 48.0
+offset_right = 432.0
+offset_bottom = 104.0
+script = ExtResource("1_nhtri")
+
+[node name="GridContainer01" type="GridContainer" parent="."]
+layout_mode = 0
+offset_right = 16.0
+offset_bottom = 56.0
+
+[node name="Inv_UI_slot1" parent="GridContainer01" instance=ExtResource("2_p5d8i")]
+layout_mode = 2
+
+[node name="Inv_UI_slot2" parent="GridContainer01" instance=ExtResource("2_p5d8i")]
+layout_mode = 2
+
+[node name="Inv_UI_slot3" parent="GridContainer01" instance=ExtResource("2_p5d8i")]
+layout_mode = 2
+
+[node name="GridContainer02" type="GridContainer" parent="."]
+layout_mode = 2
+offset_left = 368.0
+offset_right = 384.0
+offset_bottom = 56.0
+
+[node name="Inv_UI_slot1" parent="GridContainer02" instance=ExtResource("2_p5d8i")]
+layout_mode = 2
+
+[node name="Inv_UI_slot2" parent="GridContainer02" instance=ExtResource("2_p5d8i")]
+layout_mode = 2
+
+[node name="Inv_UI_slot3" parent="GridContainer02" instance=ExtResource("2_p5d8i")]
+layout_mode = 2

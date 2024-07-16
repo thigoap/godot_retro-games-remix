@@ -1,0 +1,70 @@
+[gd_scene load_steps=4 format=3 uid="uid://738b24hmv1fq"]
+
+[ext_resource type="Script" path="res://scripts/main_menu.gd" id="1_d6ncf"]
+[ext_resource type="FontFile" uid="uid://bjcunf2h07njr" path="res://assets/freshman/Freshman.ttf" id="2_c82sg"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kj46a"]
+bg_color = Color(1, 1, 1, 1)
+
+[node name="Main Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_d6ncf")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_kj46a")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 50.0
+offset_bottom = 101.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_c82sg")
+theme_override_font_sizes/font_size = 50
+text = "RETRO
+GAMES
+REMIX"
+horizontal_alignment = 1
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
+layout_mode = 2
+
+[node name="Tic Tac Toe" type="Button" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_c82sg")
+text = "PLAY TIC TAC TOE"
+
+[node name="Credits" type="Button" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_c82sg")
+text = "CREDITS"
+
+[node name="Quit" type="Button" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_c82sg")
+text = "QUIT"
+
+[connection signal="pressed" from="CenterContainer/VBoxContainer/Tic Tac Toe" to="." method="_on_tic_tac_toe_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/Credits" to="." method="_on_tic_tac_never_toe_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/Quit" to="." method="_on_quit_pressed"]

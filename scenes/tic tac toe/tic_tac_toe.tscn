@@ -1,0 +1,67 @@
+[gd_scene load_steps=8 format=3 uid="uid://ow62swkgy3la"]
+
+[ext_resource type="Script" path="res://scripts/tic tac toe/main.gd" id="1_r0q3x"]
+[ext_resource type="PackedScene" uid="uid://coeg54j5w0jk6" path="res://scenes/tic tac toe/circle.tscn" id="2_ejufw"]
+[ext_resource type="PackedScene" uid="uid://dv00ri84y0w6b" path="res://scenes/tic tac toe/cross.tscn" id="3_vmdea"]
+[ext_resource type="PackedScene" uid="uid://cv0kcnhxctf5c" path="res://scenes/tic tac toe/circle_marker.tscn" id="4_bc2hy"]
+[ext_resource type="PackedScene" uid="uid://cwh563qh70v2m" path="res://scenes/tic tac toe/cross_marker.tscn" id="5_p6qcs"]
+[ext_resource type="Texture2D" uid="uid://d1yxlf6505bri" path="res://assets/grid.png" id="6_k7huf"]
+[ext_resource type="PackedScene" uid="uid://cm82rwj3867xr" path="res://scenes/tic tac toe/game_over_menu.tscn" id="7_gn5j8"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_r0q3x")
+circle_scene = ExtResource("2_ejufw")
+cross_scene = ExtResource("3_vmdea")
+circle_marker_scene = ExtResource("4_bc2hy")
+cross_marker_scene = ExtResource("5_p6qcs")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="BoardTextureRect" type="TextureRect" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+texture = ExtResource("6_k7huf")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="PlayerLabel" type="Label" parent="CenterContainer/VBoxContainer/HBoxContainer"]
+visible = false
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "turn"
+vertical_alignment = 1
+
+[node name="PlayerPanel" type="TextureRect" parent="CenterContainer/VBoxContainer/HBoxContainer"]
+visible = false
+layout_mode = 2
+expand_mode = 2
+
+[node name="GameOverMenu" parent="CenterContainer" instance=ExtResource("7_gn5j8")]
+process_mode = 2
+
+[connection signal="restart" from="CenterContainer/GameOverMenu" to="." method="_on_game_over_menu_restart"]
