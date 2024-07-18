@@ -47,7 +47,7 @@ func _input(event):
 					grid_data[grid_pos.y][grid_pos.x] = player
 					#place that player's marker
 					create_marker(player, grid_pos * cell_size + Vector2i(cell_size / 2, cell_size / 2))
-					if check_win() != 0:
+					if check_win(player) != 0:
 						get_tree().paused = true
 						$CenterContainer/GameOverMenu.show()
 						if winner == 1:
@@ -56,10 +56,14 @@ func _input(event):
 							$CenterContainer/GameOverMenu.get_node("ResultLabel").text = "Player 2 Wins!"
 					#check if the board has been filled
 					elif moves == 9:
+						player = 0
+						change_bg_color(player)
 						get_tree().paused = true
 						$CenterContainer/GameOverMenu.show()
 						$CenterContainer/GameOverMenu.get_node("ResultLabel").text = "It's a Tie!"
 					player *= -1
+					
+					
 					#update the panel marker
 					#temp_marker.queue_free()
 					# player_panel_pos = $CenterContainer/VBoxContainer/HBoxContainer/PlayerPanel.get_position()
@@ -114,7 +118,6 @@ func create_marker(player, position, temp=false):
 		var circle = circle_scene.instantiate()
 		circle.position = position + board_pos
 		add_child(circle)
-		change_bg_color(player * -1)
 	else:
 		#if temp: 
 		#	var cross = cross_marker_scene.instantiate()
@@ -125,10 +128,9 @@ func create_marker(player, position, temp=false):
 		var cross = cross_scene.instantiate()
 		cross.position = position + board_pos
 		add_child(cross)
-		change_bg_color(player * -1)
 
 
-func check_win():
+func check_win(player):
 	#add up the markers in each ros, column and diagonal
 	for i in len(grid_data):
 		row_sum = grid_data[i][0] + grid_data[i][1] + grid_data[i][2]
@@ -141,6 +143,8 @@ func check_win():
 			winner = 1
 		elif row_sum == -3 or col_sum == -3 or diagonal1_sum == -3 or diagonal2_sum == -3:
 			winner = -1
+	if winner == 0:
+		change_bg_color(player * -1)
 	return winner
 
 
@@ -154,5 +158,13 @@ func change_bg_color(player):
 		style.bg_color =  Color(255,0,0)
 	if player == -1:
 		style.bg_color =  Color(0,0,255)
+	if player == 0:
+		style.bg_color =  Color(100,100,100)
+	
 	style.bg_color.a = 0.5
 	$Panel.add_theme_stylebox_override ("panel", style)
+
+
+func _on_button_pressed():
+	new_game()
+	get_tree().change_scene_to_file("res://scenes/main_menu.tscn")

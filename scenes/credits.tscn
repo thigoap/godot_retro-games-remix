@@ -1,0 +1,79 @@
+[gd_scene load_steps=3 format=3 uid="uid://dr6lfgy02vi6t"]
+
+[ext_resource type="Script" path="res://scripts/credits.gd" id="1_lq723"]
+[ext_resource type="FontFile" uid="uid://bjcunf2h07njr" path="res://assets/freshman/Freshman.ttf" id="2_mwuux"]
+
+[node name="Credits" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_lq723")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 126.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Godot" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_mwuux")
+theme_override_font_sizes/font_size = 14
+text = "Tic Tac Toe developed in Godot by thigoap
+"
+horizontal_alignment = 1
+
+[node name="Godot2" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_mwuux")
+text = "
+"
+horizontal_alignment = 1
+
+[node name="Assets" type="Label" parent="VBoxContainer"]
+custom_minimum_size = Vector2(350, 0)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_mwuux")
+theme_override_font_sizes/font_size = 14
+text = "Tic tac toe icons created by Freepik - Flaticon
+"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="Assets url" type="Label" parent="VBoxContainer"]
+custom_minimum_size = Vector2(350, 0)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_mwuux")
+theme_override_font_sizes/font_size = 10
+text = "https://www.flaticon.com/free-icons/tic-tac-toe
+
+"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 2
+offset_top = 121.0
+offset_right = 400.0
+offset_bottom = 121.0
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -57.5
+offset_top = 64.0
+offset_right = 57.5
+offset_bottom = 95.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("2_mwuux")
+text = "MAIN MENU"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

@@ -1,3 +1,6 @@
-# Retro Games Remix
+# Tic Tac Toe
 
-Retro Games Remix made in Godot
+Tic Tac Toe Remix made in Godot
+
+- Classic Tic Tac Toe
+- To Do: variations
