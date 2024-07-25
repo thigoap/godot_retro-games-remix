@@ -1,7 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://dr6lfgy02vi6t"]
+[gd_scene load_steps=4 format=3 uid="uid://dr6lfgy02vi6t"]
 
 [ext_resource type="Script" path="res://scripts/credits.gd" id="1_lq723"]
 [ext_resource type="FontFile" uid="uid://bjcunf2h07njr" path="res://assets/freshman/Freshman.ttf" id="2_mwuux"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_s8h6q"]
+bg_color = Color(1, 1, 1, 1)
 
 [node name="Credits" type="Control"]
 layout_mode = 3
@@ -12,33 +15,63 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_lq723")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="Panel" type="Panel" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = 126.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_s8h6q")
 
-[node name="Godot" type="Label" parent="VBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 100
+theme_override_constants/margin_right = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
 layout_mode = 2
+theme_override_constants/separation = 50
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Title" type="Label" parent="MarginContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_mwuux")
+theme_override_font_sizes/font_size = 24
+text = "CREDITS
+"
+horizontal_alignment = 1
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Game" type="Label" parent="MarginContainer/VBoxContainer/VBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("2_mwuux")
 theme_override_font_sizes/font_size = 14
-text = "Tic Tac Toe developed in Godot by thigoap
+text = "Tic Tac Toe developed by thigoap
 "
 horizontal_alignment = 1
 
-[node name="Godot2" type="Label" parent="VBoxContainer"]
+[node name="Assets" type="Label" parent="MarginContainer/VBoxContainer/VBoxContainer2"]
+custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
-theme_override_fonts/font = ExtResource("2_mwuux")
-text = "
-"
-horizontal_alignment = 1
-
-[node name="Assets" type="Label" parent="VBoxContainer"]
-custom_minimum_size = Vector2(350, 0)
-layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("2_mwuux")
 theme_override_font_sizes/font_size = 14
 text = "Tic tac toe icons created by Freepik - Flaticon
@@ -46,9 +79,10 @@ text = "Tic tac toe icons created by Freepik - Flaticon
 horizontal_alignment = 1
 autowrap_mode = 2
 
-[node name="Assets url" type="Label" parent="VBoxContainer"]
-custom_minimum_size = Vector2(350, 0)
+[node name="Assets url" type="Label" parent="MarginContainer/VBoxContainer/VBoxContainer2"]
+custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0.913725, 1)
 theme_override_fonts/font = ExtResource("2_mwuux")
 theme_override_font_sizes/font_size = 10
 text = "https://www.flaticon.com/free-icons/tic-tac-toe
@@ -57,23 +91,13 @@ text = "https://www.flaticon.com/free-icons/tic-tac-toe
 horizontal_alignment = 1
 autowrap_mode = 2
 
-[node name="Panel" type="Panel" parent="."]
+[node name="VBoxContainer3" type="VBoxContainer" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
-offset_top = 121.0
-offset_right = 400.0
-offset_bottom = 121.0
+size_flags_horizontal = 4
 
-[node name="Button" type="Button" parent="."]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -57.5
-offset_top = 64.0
-offset_right = 57.5
-offset_bottom = 95.0
-grow_horizontal = 2
+[node name="Button" type="Button" parent="MarginContainer/VBoxContainer/VBoxContainer3"]
+layout_mode = 2
 theme_override_fonts/font = ExtResource("2_mwuux")
 text = "MAIN MENU"
 
-[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/VBoxContainer3/Button" to="." method="_on_button_pressed"]
