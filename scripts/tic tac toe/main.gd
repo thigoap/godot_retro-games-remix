@@ -51,8 +51,14 @@ func _input(event):
 						get_tree().paused = true
 						$CenterContainer/GameOverMenu.show()
 						if winner == 1:
+							Status.player_1_victories += 1
+							Status.players_games += 1
+							Status.save_status()
 							$CenterContainer/GameOverMenu.get_node("ResultLabel").text = "Player 1 Wins!"
 						elif winner == -1:
+							Status.player_2_victories += 1
+							Status.players_games += 1
+							Status.save_status()
 							$CenterContainer/GameOverMenu.get_node("ResultLabel").text = "Player 2 Wins!"
 					#check if the board has been filled
 					elif moves == 9:
@@ -61,9 +67,10 @@ func _input(event):
 						get_tree().paused = true
 						$CenterContainer/GameOverMenu.show()
 						$CenterContainer/GameOverMenu.get_node("ResultLabel").text = "It's a Tie!"
+						Status.players_draws += 1
+						Status.players_games += 1
+						Status.save_status()
 					player *= -1
-					
-					
 					#update the panel marker
 					#temp_marker.queue_free()
 					# player_panel_pos = $CenterContainer/VBoxContainer/HBoxContainer/PlayerPanel.get_position()

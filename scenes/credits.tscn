@@ -95,9 +95,9 @@ autowrap_mode = 2
 layout_mode = 2
 size_flags_horizontal = 4
 
-[node name="Button" type="Button" parent="MarginContainer/VBoxContainer/VBoxContainer3"]
+[node name="Main Menu Button" type="Button" parent="MarginContainer/VBoxContainer/VBoxContainer3"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_mwuux")
 text = "MAIN MENU"
 
-[connection signal="pressed" from="MarginContainer/VBoxContainer/VBoxContainer3/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/VBoxContainer3/Main Menu Button" to="." method="_on_main_menu_button_pressed"]
